@@ -3,7 +3,7 @@
   }
   
   :root {
-    --cell-size: 150px;
+    --cell-size: 100px;
     --mark-size: calc(var(--cell-size) * .9);
   }
   
@@ -66,39 +66,41 @@
     align-content: center;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(3, auto)
+    grid-template-columns: repeat(5, auto)
   }
-  
+
+
   .cell {
     width: var(--cell-size);
     height: var(--cell-size);
-    border: 3px solid rgba(24, 142, 211, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     cursor: pointer;
   }
-  
-  /** ilk satır **/
-  .cell:first-child, .cell:nth-child(2), .cell:nth-child(3) {
-    border-top: none;
+
+  .cell:first-child, .cell:nth-child(2), .cell:nth-child(6), .cell:nth-child(7){
+    border: 2px solid red;
   }
-  
-  .cell:nth-child(3n + 1) {
-    border-left: none;
+
+  .cell:nth-child(9), .cell:nth-child(4), .cell:nth-child(5), .cell:nth-child(10){
+    border: 2px solid blue;
   }
-  
-  .cell:nth-child(3n + 3) {
-    border-right: none;
+
+  .cell:nth-child(16), .cell:nth-child(17), .cell:nth-child(21), .cell:nth-child(22){
+    border: 2px solid yellow;
   }
-  
-  .cell:last-child,
-  .cell:nth-child(8),
-  .cell:nth-child(7) {
-    border-bottom: none;
+
+  .cell:nth-child(19), .cell:nth-child(20), .cell:nth-child(24), .cell:nth-child(25){
+    border: 2px solid green;
   }
-  
+  .cell:nth-child(3), .cell:nth-child(8), .cell:nth-child(11), .cell:nth-child(12), .cell:nth-child(13), .cell:nth-child(14), .cell:nth-child(15), .cell:nth-child(18), .cell:nth-child(23){
+    border: 2px solid black;
+  }
+
+
+
   .cell.x,
   .cell.circle {
     cursor: not-allowed;
