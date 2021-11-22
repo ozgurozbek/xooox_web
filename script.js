@@ -1,12 +1,30 @@
 const classX = 'x' 
 const classO = 'circle'
-const winMethot = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
+const mainPanel = [
+  [0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0]
+]
+
+const winMethot = [
+  [0, 1, 2],
+  [5, 6, 7],
+  [10, 11, 12],
+  [0, 5, 10],
+  [1, 6, 11],
+  [2, 7, 12],
+  [0, 6, 12],
+  [2, 6, 10],
+]
 const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winMessageElement = document.getElementById('winMessage')
 const restButton = document.getElementById('restButton')
 const winMessageTextElement = document.querySelector('[data-winMsgText]')
 let turnO
+
 
 startGame()
 
@@ -55,6 +73,17 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass)
+  var cellArray = Array.from(document.querySelectorAll('.cell')); //this code writes the cell name to the array. like div.cell.x div.cell.circle or div.cell
+  console.log(cellArray)
+  //* for(let i=0; i<25; i++){
+   // if (cellArray [i] = cell.x){
+      //mainPanel[i]=1
+    //}
+    //else if (cellArray [i] = cell.circle){
+      //mainPanel[i]=2
+    //}
+  //} 
+
 }
 
 function swapTurns() {
@@ -74,3 +103,4 @@ function checkWin(currentClass) { return winMethot.some(combination => { return 
     })
   })
 }
+
