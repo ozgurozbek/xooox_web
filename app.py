@@ -10,10 +10,9 @@ def root():
 
 # Page modules
 @app.route('/get', methods=['GET'])
-def get_dpf():
-    board = request.args.get('board', default=['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'], type=list)
-    return (type(board), board)
-
+def get():
+    board = request.args.get('board', default="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0", type=str)
+    return board
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

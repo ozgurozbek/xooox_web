@@ -14,31 +14,26 @@
 <body>
   <button id="get-btn">Getir</button>
   <div class="board" id="board">
-    <div class="cell cell-red" data-cell></div>
-    <div class="cell cell-red" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-yellow" data-cell></div>
-    <div class="cell cell-yellow" data-cell></div>
-    <div class="cell cell-red" data-cell></div>
-    <div class="cell cell-red" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-yellow" data-cell></div>
-    <div class="cell cell-yellow" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-blue" data-cell></div>
-    <div class="cell cell-blue" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-green" data-cell></div>
-    <div class="cell cell-green" data-cell></div>
-    <div class="cell cell-blue" data-cell></div>
-    <div class="cell cell-blue" data-cell></div>
-    <div class="cell cell-black" data-cell></div>
-    <div class="cell cell-green" data-cell></div>
-    <div class="cell cell-green" data-cell></div>
+    {% for i in range(25) %}
+      {% if i in [0,1,5,6] %}
+        <div onclick="updateBoard({{i}})" class="cell cell-red" data-cell></div>
+      {% endif%}
+      {% if i in [2,7,10,11,13,14,17,22] %}
+        <div onclick="updateBoard({{i}})" class="cell cell-black" data-cell></div>
+      {% endif%}
+      {% if i in [3,4,8,9] %}
+        <div onclick="updateBoard({{i}})" class="cell cell-yellow" data-cell></div>
+      {% endif%}
+      {% if i in [15,16,20,21] %}
+        <div onclick="updateBoard({{i}})" class="cell cell-blue" data-cell></div>
+      {% endif%}
+      {% if i in [18,19,23,24] %}
+        <div onclick="updateBoard({{i}})" class="cell cell-green" data-cell></div>
+      {% endif%}
+      {% if i in [12] %}
+        <div onclick="updateBoard({{i}})" class="cell cell-center" data-cell></div>
+      {% endif%}
+    {% endfor %}
   </div>
   <div class=loader>
     <span></span>

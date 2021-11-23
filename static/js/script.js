@@ -97,3 +97,13 @@ function checkWin(currentClass) {
   })
 }
 
+function postButtonVal(theUrl){
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", theUrl, false); //Keep this false for discouraged synchronous request. Or don't.
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
+
+function updateBoard(id) {
+  console.log(postButtonVal('/get?board='+id));
+}
