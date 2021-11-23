@@ -45,6 +45,7 @@ function startGame() {
 function handleClick(e) {
   const cell = e.target
   const currentClass = turnO ? classO : classX
+  //var cellArray = Array.from(document.querySelectorAll('.cell')); //this code writes the cell name to the array. like div.cell.x div.cell.circle or div.cell
   placeMark(cell, currentClass)
   if (checkWin(currentClass)) {
     endGame(false)
@@ -73,18 +74,8 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass)
-  var cellArray = Array.from(document.querySelectorAll('.cell')); //this code writes the cell name to the array. like div.cell.x div.cell.circle or div.cell
-  console.log(cellArray)
-  //* for(let i=0; i<25; i++){
-   // if (cellArray [i] = cell.x){
-      //mainPanel[i]=1
-    //}
-    //else if (cellArray [i] = cell.circle){
-      //mainPanel[i]=2
-    //}
-  //} 
-
-}
+  console.log(cellElements)
+} 
 
 function swapTurns() {
   turnO = !turnO
