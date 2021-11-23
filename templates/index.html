@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Jinja HTML-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="stylesheet" href="./static/css/loader.css">
+  <script src="./static/js/script.js" defer></script>
+  <script src="./static/js/request.js" defer></script>
+  <title>XoooX.AI</title>
+</head>
+<body>
+  <button id="get-btn">Getir</button>
+  <div class="board" id="board">
+    <div class="cell cell-red" data-cell></div>
+    <div class="cell cell-red" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-yellow" data-cell></div>
+    <div class="cell cell-yellow" data-cell></div>
+    <div class="cell cell-red" data-cell></div>
+    <div class="cell cell-red" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-yellow" data-cell></div>
+    <div class="cell cell-yellow" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-blue" data-cell></div>
+    <div class="cell cell-blue" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-green" data-cell></div>
+    <div class="cell cell-green" data-cell></div>
+    <div class="cell cell-blue" data-cell></div>
+    <div class="cell cell-blue" data-cell></div>
+    <div class="cell cell-black" data-cell></div>
+    <div class="cell cell-green" data-cell></div>
+    <div class="cell cell-green" data-cell></div>
+  </div>
+  <div class=loader>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="win-msg" id="winMessage">
+    <div data-winMsgText></div>
+    <button id="restButton">{{button_val}}</button>
+  </div>
+</body>
+</html>
