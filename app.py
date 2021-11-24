@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 #pip install flask
+import ai
 
 app = Flask(__name__)
 
@@ -11,8 +12,8 @@ def root():
 # Page modules
 @app.route('/get', methods=['GET'])
 def get():
-    board = request.args.get('board', default="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0", type=str)
-    return board
+    input_button_val = request.args.get('board', default=-1, type=int)
+    return str(ai.processBoard(input_button_val))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

@@ -74,7 +74,7 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass)
-  console.log(cellElements)
+  //console.log(cellElements)
 }
 
 function swapTurns() {
@@ -105,5 +105,5 @@ function postButtonVal(theUrl){
 }
 
 function updateBoard(id) {
-  console.log(postButtonVal('/get?board='+id));
+  document.getElementById('result').innerText = postButtonVal('/get?board='+id);
 }
