@@ -8,6 +8,8 @@ app = Flask(__name__)
 @app.route("/")
 def root():
     return render_template('index.html', button_val = "Yeniden Başlat")
+    return render_template('index.html', button_val1 = "X")
+    return render_template('index.html', button_val2 = "O")
 
 # Page modules
 @app.route('/get', methods=['GET'])

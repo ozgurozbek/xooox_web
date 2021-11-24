@@ -22,11 +22,31 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winMessageElement = document.getElementById('winMessage')
 const restButton = document.getElementById('restButton')
+const xChoose = document.getElementById('xChoose')
+const oChoose = document.getElementById('oChoose')
 const winMessageTextElement = document.querySelector('[data-winMsgText]')
+var choose = 0
 let turnO
 
+function chooseOne() {
+   chooseTextElement.innerText = 'Seçim Yapın'
+    xChoose.addEventListener('click', choosingX)
+    oChoose.addEventListener('click', choosingO)
 
+}
+
+function choosingX() {
+  choose = 1;
+  startGame()
+  chooseElement.classList.remove('show')
+}
+function choosingO() {
+  startGame()
+  choose = 2
+  chooseElement.classList.remove('show')
+}
 startGame()
+
 
 restButton.addEventListener('click', startGame)
 
@@ -44,15 +64,15 @@ function startGame() {
 
 function handleClick(e) {
   const cell = e.target
-  const currentClass = turnO ? classO : classX
+  const currentClass = classX
   //var cellArray = Array.from(document.querySelectorAll('.cell')); //this code writes the cell name to the array. like div.cell.x div.cell.o or div.cell
   placeMark(cell, currentClass)
+  responseAi()
   if (checkWin(currentClass)) {
     endGame(false)
   } else if (isDraw()) {
     endGame(true)
   } else {
-    swapTurns()
     setBoardHoverClass()
   }
 }
@@ -74,11 +94,6 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass)
-  //console.log(cellElements)
-}
-
-function swapTurns() {
-  turnO = !turnO
 }
 
 function setBoardHoverClass() {
@@ -102,8 +117,16 @@ function postButtonVal(theUrl){
     xmlHttp.open("GET", theUrl, false); //Keep this false for discouraged synchronous request. Or don't.
     xmlHttp.send(null);
     return xmlHttp.responseText;
+    console.log(xmlHttp.responseText)
 }
 
 function updateBoard(id) {
   document.getElementById('result').innerText = postButtonVal('/get?board='+id);
+}
+
+function responseAi() {
+  const currentClass = classO;
+  var response = 5;
+  const cellAi = document.getElementById(response)
+  cellAi.classList.add(currentClass)
 }
