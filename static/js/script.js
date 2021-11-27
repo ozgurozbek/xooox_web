@@ -21,31 +21,41 @@ const winMethot = [
 const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winMessageElement = document.getElementById('winMessage')
+const chooseElement = document.getElementById('choose')
 const restButton = document.getElementById('restButton')
+const result = document.getElementById('result')
 const xChoose = document.getElementById('xChoose')
 const oChoose = document.getElementById('oChoose')
+const loader = document.getElementById('timeout')
+
 const winMessageTextElement = document.querySelector('[data-winMsgText]')
-var choose = 0
+const chooseTextElement = document.querySelector('[data-chooseText]')
+var choosen = 0
 let turnO
+var xmlHttp = new XMLHttpRequest();
+
+chooseOne()
 
 function chooseOne() {
-   chooseTextElement.innerText = 'Seçim Yapın'
-    xChoose.addEventListener('click', choosingX)
-    oChoose.addEventListener('click', choosingO)
+  chooseTextElement.innerText = 'Seçim Yapın'
+  xChoose.addEventListener('click', choosingX)
+  oChoose.addEventListener('click', choosingO)
 
 }
 
 function choosingX() {
-  choose = 1;
+  choosen = 1;
+  choose.style.display = "none";
   startGame()
-  chooseElement.classList.remove('show')
+  console.log(choosen)
 }
 function choosingO() {
+  choosen = 2
+  choose.style.display = "none";
   startGame()
-  choose = 2
-  chooseElement.classList.remove('show')
+  console.log(choosen)
 }
-startGame()
+
 
 
 restButton.addEventListener('click', startGame)
@@ -67,7 +77,6 @@ function handleClick(e) {
   const currentClass = classX
   //var cellArray = Array.from(document.querySelectorAll('.cell')); //this code writes the cell name to the array. like div.cell.x div.cell.o or div.cell
   placeMark(cell, currentClass)
-  responseAi()
   if (checkWin(currentClass)) {
     endGame(false)
   } else if (isDraw()) {
@@ -112,21 +121,19 @@ function checkWin(currentClass) {
   })
 }
 
-function postButtonVal(theUrl){
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", theUrl, false); //Keep this false for discouraged synchronous request. Or don't.
-    xmlHttp.send(null);
-    return xmlHttp.responseText;
-    console.log(xmlHttp.responseText)
+function postButtonVal(theUrl) {
+  xmlHttp.open("GET", theUrl, false); //Keep this false for discouraged synchronous request. Or don't.
+  xmlHttp.send(null);
+  return xmlHttp.responseText;
 }
 
 function updateBoard(id) {
-  document.getElementById('result').innerText = postButtonVal('/get?board='+id);
-}
-
-function responseAi() {
+  loader.style.display = "flex";
   const currentClass = classO;
-  var response = 5;
+  const response = postButtonVal('/get?board=' + id);
   const cellAi = document.getElementById(response)
   cellAi.classList.add(currentClass)
+  //loader.style.display = "none";
 }
+
+
