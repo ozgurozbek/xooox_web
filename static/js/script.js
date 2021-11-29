@@ -22,7 +22,7 @@ const cellElements = document.querySelectorAll('[data-cell]')
 const board = document.getElementById('board')
 const winMessageElement = document.getElementById('winMessage')
 const chooseElement = document.getElementById('choose')
-const restButton = document.getElementById('restButton')
+const restartButton = document.getElementById('restartButton')
 const result = document.getElementById('result')
 const xChoose = document.getElementById('xChoose')
 const oChoose = document.getElementById('oChoose')
@@ -30,35 +30,17 @@ const loader = document.getElementById('timeout')
 
 const winMessageTextElement = document.querySelector('[data-winMsgText]')
 const chooseTextElement = document.querySelector('[data-chooseText]')
-var choosen = 0
+var chosen = 0
 let turnO
 var xmlHttp = new XMLHttpRequest();
 
-chooseOne()
+//Bu bayağı kötü approach, düzeltmek lazım ileride, yoksa X seçmeden oyunu başlatacak.
+chosen = 1;
+startGame();
+console.log(chosen?"Game initiated as X":"Game initiated as O, something is wrong.");
+//-
 
-function chooseOne() {
-  chooseTextElement.innerText = 'Seçim Yapın'
-  xChoose.addEventListener('click', choosingX)
-  oChoose.addEventListener('click', choosingO)
-
-}
-
-function choosingX() {
-  choosen = 1;
-  choose.style.display = "none";
-  startGame()
-  console.log(choosen)
-}
-function choosingO() {
-  choosen = 2
-  choose.style.display = "none";
-  startGame()
-  console.log(choosen)
-}
-
-
-
-restButton.addEventListener('click', startGame)
+restartButton.addEventListener('click', startGame)
 
 function startGame() {
   turnO = false
