@@ -16,7 +16,7 @@ ID|Status   |Content
 01|DONE     |5 by 5 field of buttons for the gameloop.
 02|DONE     |Backend returns a number, insert "O" to that id.
 03|BACKLOG  |While waiting for backend input of 2 seconds timeout, display loading animation.
-04|         |Create Header.html, Footer.html using Bootstrap.
+04|DONE     |Create Header.html, Footer.html using Bootstrap.
 05|         |Implement and use bootstrap responsive structure for the gameloop field.
 
 ## AI
@@ -37,4 +37,4 @@ ID|Status   |Content
 --|-----:   |:-----
 01|DONE     |Create gif for loading icon.
 02|DONE     |Add Head.html for frontend ease of access.
-03|         |Add favicon.ico, use something like "https://vectorified.com/images/coc-icon-31.png"
+03|DONE     |Add favicon.ico, use something like "https://vectorified.com/images/coc-icon-31.png"
