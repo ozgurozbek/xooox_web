@@ -18,6 +18,7 @@ ID|Status   |Content
 03|BACKLOG  |While waiting for backend input of 2 seconds timeout, display loading animation.
 04|DONE     |Create Header.html, Footer.html using Bootstrap.
 05|         |Implement and use bootstrap responsive structure for the gameloop field.
+06|         |Remove JS side win conditions.
 
 ## AI
 
@@ -38,3 +39,4 @@ ID|Status   |Content
 01|DONE     |Create gif for loading icon.
 02|DONE     |Add Head.html for frontend ease of access.
 03|DONE     |Add favicon.ico, use something like "https://vectorified.com/images/coc-icon-31.png"
+04|DONE     |Minify & implement favicon
