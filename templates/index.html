@@ -4,31 +4,46 @@
 {% include 'HEADER.html' %}
 
 <body>
-  <p id="result">Result</p>
-  <div class="board" id="board">
-    {% for i in range(25) %}
-      {% if i in [0,1,5,6] %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" class="cell cell-red" data-cell></div>
-      {% endif%}
-      {% if i in [2,7,10,11,13,14,17,22] %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" class="cell cell-black" data-cell></div>
-      {% endif%}
-      {% if i in [3,4,8,9] %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" class="cell cell-yellow" data-cell></div>
-      {% endif%}
-      {% if i in [15,16,20,21] %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" class="cell cell-blue" data-cell></div>
-      {% endif%}
-      {% if i in [18,19,23,24] %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" class="cell cell-green" data-cell></div>
-      {% endif%}
-      {% if i in [12] %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" class="cell cell-center" data-cell></div>
-      {% endif%}
-    {% endfor %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm6 content">
+        <div class="container ana-container">
+          <div class="row xox-row">
+            {% for i in range(5) %}
+            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2 xox-box">{{i}}</div>
+            {% endfor %}
+          </div>
+          <div class="row xox-row">
+            {% for i in range(5,10,1) %}
+            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2 xox-box">{{i}}</div>
+            {% endfor %}
+          </div>
+          <div class="row xox-row">
+            {% for i in range(10,15,1) %}
+            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2 xox-box">{{i}}</div>
+            {% endfor %}
+          </div>
+          <div class="row xox-row">
+            {% for i in range(15,20,1) %}
+            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2 xox-box">{{i}}</div>
+            {% endfor %}
+          </div>
+          <div class="row xox-row">
+            {% for i in range(20,25,1) %}
+            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2 xox-box">{{i}}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <p id="result">Result</p>
+
+
   <div class="loader" id="timeout">
-    <img src="/static/img/loading.gif" style=" height: auto; width: 200px;">
+    <img src="/staxox/img/loading.gif" style=" height: auto; width: 200px;">
   </div>
   <div class="win-msg" id="winMessage">
     <div data-winMsgText></div>

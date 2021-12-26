@@ -7,9 +7,63 @@
   --mark-size: calc(var(--cell-size) * .9);
 }
 
-body {
-  margin: 0;
+
+
+
+
+
+
+/* ****************** Table style ****************** */
+.xox-panel{
+  border: solid 2px black;
+  background: #5e5e5e;
 }
+
+.xox-box{
+  border: solid black 1px;
+  font-size: 40px;
+  background: #ff0000;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.xox-box:hover{
+  background: #4b0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .select-box {
   position: absolute;
