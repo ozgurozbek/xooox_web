@@ -19,6 +19,7 @@ ID|Status   |Content
 04|DONE     |Create Header.html, Footer.html using Bootstrap.
 05|         |Implement and use bootstrap responsive structure for the gameloop field.
 06|         |Remove JS side win conditions.
+07|         |Send board POST
 
 ## AI
 
