@@ -18,17 +18,17 @@ ID|Status   |Content
 03|BACKLOG  |While waiting for backend input of 2 seconds timeout, display loading animation.
 04|DONE     |Create Header.html, Footer.html using Bootstrap.
 05|         |Implement and use bootstrap responsive structure for the gameloop field.
-06|         |Remove JS side win conditions.
-07|         |Send board POST
+06|DONE     |Remove JS side win conditions.
+07|BACKLOG  |Send board POST -> This does not work properly.
 
 ## AI
 
 ID|Status   |Content
 --|-----:   |:-----
 01|DONE     |Return temp value for frontend.
-02|         |Implement minimax logic.
-03|         |Implement board calculations.
-04|         |Implement depth.
+02|DONE     |Implement minimax logic.
+03|DONE     |Implement board calculations.
+04|DONE     |Implement depth.
 05|         |Implement agressiveness.
 06|         |Alpha-Beta pruning.
 06|         |Implement cache if causing timeout.

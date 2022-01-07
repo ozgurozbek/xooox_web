@@ -1,11 +1,7 @@
-const classX = 'x'
-const classO = 'o'
-const mainPanel = [
-  0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0,    
-  0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0]
+// x = 2
+// o = 1
+// empty = 0
+var mainPanel = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 const board = document.getElementById('board')
 const result = document.getElementById('result')
@@ -21,9 +17,11 @@ function postButtonVal(theUrl) {
 
 function updateBoard(id) {
   loader.style.display = "flex";
-  mainPanel[id]= "x";
-  console.log(mainPanel)
-  // const response = postButtonVal('/get?board=' + id); 
+  mainPanel[id]= 2;
+  console.log(mainPanel.toString());
+  console.log("RESPONSE ::::::::::::::::::::::");
+  mainPanel = postButtonVal('/get?board=' + mainPanel.toString()).slice(1,-2);
+  console.log(mainPanel);
 }
 
 

@@ -1,13 +1,236 @@
-# Get move button
-# Return board
+# AI is ALWAYS 1
 import time
 
-def processBoard(input_button_val):
-    if input_button_val == -1:
-        return -1
-    else:
-        return runMinimax(input_button_val)
+difficulty = 3
+instanceDepth = 3
 
-def runMinimax(input_button_val):
+def runMinimax(board):
     """Runs Minimax with the input button, returns index from board array"""
-    return input_button_val-1 if input_button_val>0 else input_button_val
+
+    def countPoints(value):
+        score = 0
+
+        #region Easy, Grade Board
+        if (difficulty >= 1):
+            score += 3 if board[0] == value else 0
+            score += 2 if board[1] == value else 0
+            score += 6 if board[2] == value else 0
+            score += 2 if board[3] == value else 0
+            score += 3 if board[4] == value else 0
+
+            score += 2 if board[5] == value else 0
+            score += 4 if board[6] == value else 0
+            score += 4 if board[7] == value else 0
+            score += 4 if board[8] == value else 0
+            score += 2 if board[9] == value else 0
+
+            score += 6 if board[10] == value else 0
+            score += 4 if board[11] == value else 0
+            score += 12 if board[12] == value else 0
+            score += 4 if board[13] == value else 0
+            score += 6 if board[14] == value else 0
+
+            score += 2 if board[15] == value else 0
+            score += 4 if board[16] == value else 0
+            score += 4 if board[17] == value else 0
+            score += 4 if board[18] == value else 0
+            score += 2 if board[19] == value else 0
+
+            score += 3 if board[20] == value else 0
+            score += 2 if board[21] == value else 0
+            score += 6 if board[22] == value else 0
+            score += 2 if board[23] == value else 0
+            score += 3 if board[24] == value else 0
+        #endregion
+
+        #region Medium, Make Combo
+        if (difficulty >= 2):
+            score += 2 if (len(set([board[0],board[5],board[10],value]))==1) else 0
+            score += 2 if (len(set([board[1],board[6],board[11],value]))==1) else 0
+            score += 2 if (len(set([board[2],board[7],board[12],value]))==1) else 0
+            score += 2 if (len(set([board[3],board[8],board[13],value]))==1) else 0
+            score += 2 if (len(set([board[4],board[9],board[14],value]))==1) else 0
+
+            score += 2 if (len(set([board[10],board[15],board[20],value]))==1) else 0
+            score += 2 if (len(set([board[11],board[16],board[21],value]))==1) else 0
+            score += 2 if (len(set([board[12],board[17],board[22],value]))==1) else 0
+            score += 2 if (len(set([board[13],board[18],board[23],value]))==1) else 0
+            score += 2 if (len(set([board[14],board[19],board[24],value]))==1) else 0
+
+            score += 2 if (len(set([board[0],board[1],board[2],value]))==1) else 0
+            score += 2 if (len(set([board[5],board[6],board[7],value]))==1) else 0
+            score += 2 if (len(set([board[10],board[11],board[12],value]))==1) else 0
+            score += 2 if (len(set([board[15],board[16],board[17],value]))==1) else 0
+            score += 2 if (len(set([board[20],board[21],board[22],value]))==1) else 0
+
+            score += 2 if (len(set([board[2],board[3],board[4],value]))==1) else 0
+            score += 2 if (len(set([board[7],board[8],board[9],value]))==1) else 0
+            score += 2 if (len(set([board[12],board[13],board[14],value]))==1) else 0
+            score += 2 if (len(set([board[17],board[18],board[19],value]))==1) else 0
+            score += 2 if (len(set([board[22],board[23],board[24],value]))==1) else 0
+
+            score += 2 if (len(set([board[0],board[6],board[12],value]))==1) else 0
+            score += 2 if (len(set([board[4],board[8],board[12],value]))==1) else 0
+            score += 2 if (len(set([board[12],board[16],board[20],value]))==1) else 0
+            score += 2 if (len(set([board[12],board[18],board[24],value]))==1) else 0
+
+            score += 2 if (len(set([board[2],board[6],board[10],value]))==1) else 0
+            score += 2 if (len(set([board[2],board[8],board[14],value]))==1) else 0
+            score += 2 if (len(set([board[10],board[16],board[22],value]))==1) else 0
+            score += 2 if (len(set([board[14],board[18],board[22],value]))==1) else 0
+        #endregion
+
+        #region Hard, Block Enemy
+        if (difficulty >= 2):
+            score += 3 if (board[0]==value and board[5]==2 and board[10]==2) else 0
+            score += 3 if (board[0]==value and board[6]==2 and board[12]==2) else 0
+            score += 3 if (board[0]==value and board[1]==2 and board[2]==2) else 0
+
+            score += 3 if (board[1]==value and board[0]==2 and board[2]==2) else 0
+            score += 3 if (board[1]==value and board[6]==2 and board[11]==2) else 0
+
+            score += 3 if (board[2]==value and board[0]==2 and board[2]==2) else 0
+            score += 3 if (board[2]==value and board[6]==2 and board[10]==2) else 0
+            score += 3 if (board[2]==value and board[7]==2 and board[12]==2) else 0
+            score += 3 if (board[2]==value and board[8]==2 and board[14]==2) else 0
+            score += 3 if (board[2]==value and board[3]==2 and board[4]==2) else 0
+
+            score += 3 if (board[3]==value and board[2]==2 and board[4]==2) else 0
+            score += 3 if (board[3]==value and board[8]==2 and board[13]==2) else 0
+
+            score += 3 if (board[4]==value and board[2]==2 and board[3]==2) else 0
+            score += 3 if (board[4]==value and board[8]==2 and board[12]==2) else 0
+            score += 3 if (board[4]==value and board[9]==2 and board[14]==2) else 0
+
+            score += 3 if (board[5]==value and board[0]==2 and board[10]==2) else 0
+            score += 3 if (board[5]==value and board[6]==2 and board[7]==2) else 0
+
+            score += 3 if (board[6]==value and board[0]==2 and board[12]==2) else 0
+            score += 3 if (board[6]==value and board[1]==2 and board[11]==2) else 0
+            score += 3 if (board[6]==value and board[2]==2 and board[10]==2) else 0
+            score += 3 if (board[6]==value and board[5]==2 and board[7]==2) else 0
+
+            score += 3 if (board[7]==value and board[5]==2 and board[6]==2) else 0
+            score += 3 if (board[7]==value and board[2]==2 and board[12]==2) else 0
+            score += 3 if (board[7]==value and board[8]==2 and board[9]==2) else 0
+
+            score += 3 if (board[8]==value and board[2]==2 and board[14]==2) else 0
+            score += 3 if (board[8]==value and board[3]==2 and board[13]==2) else 0
+            score += 3 if (board[8]==value and board[4]==2 and board[12]==2) else 0
+            score += 3 if (board[8]==value and board[7]==2 and board[9]==2) else 0
+
+            score += 3 if (board[9]==value and board[4]==2 and board[14]==2) else 0
+            score += 3 if (board[9]==value and board[7]==2 and board[8]==2) else 0
+
+            score += 3 if (board[10]==value and board[0]==2 and board[5]==2) else 0
+            score += 3 if (board[10]==value and board[2]==2 and board[6]==2) else 0
+            score += 3 if (board[10]==value and board[11]==2 and board[12]==2) else 0
+            score += 3 if (board[10]==value and board[16]==2 and board[22]==2) else 0
+            score += 3 if (board[10]==value and board[15]==2 and board[20]==2) else 0
+
+            score += 3 if (board[11]==value and board[1]==2 and board[6]==2) else 0
+            score += 3 if (board[11]==value and board[10]==2 and board[12]==2) else 0
+            score += 3 if (board[11]==value and board[16]==2 and board[21]==2) else 0
+
+            score += 3 if (board[12]==value and board[0]==2 and board[6]==2) else 0
+            score += 3 if (board[12]==value and board[2]==2 and board[7]==2) else 0
+            score += 3 if (board[12]==value and board[4]==2 and board[8]==2) else 0
+            score += 3 if (board[12]==value and board[10]==2 and board[11]==2) else 0
+            score += 3 if (board[12]==value and board[13]==2 and board[14]==2) else 0
+            score += 3 if (board[12]==value and board[16]==2 and board[20]==2) else 0
+            score += 3 if (board[12]==value and board[17]==2 and board[22]==2) else 0
+            score += 3 if (board[12]==value and board[18]==2 and board[24]==2) else 0
+
+            score += 3 if (board[13]==value and board[12]==2 and board[14]==2) else 0
+            score += 3 if (board[13]==value and board[3]==2 and board[8]==2) else 0
+            score += 3 if (board[13]==value and board[18]==2 and board[23]==2) else 0
+
+            score += 3 if (board[14]==value and board[2]==2 and board[8]==2) else 0
+            score += 3 if (board[14]==value and board[4]==2 and board[9]==2) else 0
+            score += 3 if (board[14]==value and board[12]==2 and board[13]==2) else 0
+            score += 3 if (board[14]==value and board[18]==2 and board[22]==2) else 0
+            score += 3 if (board[14]==value and board[19]==2 and board[24]==2) else 0
+
+            score += 3 if (board[15]==value and board[10]==2 and board[20]==2) else 0
+            score += 3 if (board[15]==value and board[16]==2 and board[17]==2) else 0
+
+            score += 3 if (board[16]==value and board[10]==2 and board[22]==2) else 0
+            score += 3 if (board[16]==value and board[11]==2 and board[21]==2) else 0
+            score += 3 if (board[16]==value and board[12]==2 and board[20]==2) else 0
+            score += 3 if (board[16]==value and board[15]==2 and board[17]==2) else 0
+
+            score += 3 if (board[17]==value and board[12]==2 and board[22]==2) else 0
+            score += 3 if (board[17]==value and board[15]==2 and board[16]==2) else 0
+            score += 3 if (board[17]==value and board[18]==2 and board[19]==2) else 0
+
+            score += 3 if (board[18]==value and board[12]==2 and board[24]==2) else 0
+            score += 3 if (board[18]==value and board[13]==2 and board[23]==2) else 0
+            score += 3 if (board[18]==value and board[14]==2 and board[22]==2) else 0
+            score += 3 if (board[18]==value and board[17]==2 and board[19]==2) else 0
+
+            score += 3 if (board[19]==value and board[14]==2 and board[24]==2) else 0
+            score += 3 if (board[19]==value and board[17]==2 and board[18]==2) else 0
+
+            score += 3 if (board[20]==value and board[10]==2 and board[15]==2) else 0
+            score += 3 if (board[20]==value and board[12]==2 and board[16]==2) else 0
+            score += 3 if (board[20]==value and board[21]==2 and board[22]==2) else 0
+
+            score += 3 if (board[21]==value and board[20]==2 and board[22]==2) else 0
+            score += 3 if (board[21]==value and board[11]==2 and board[16]==2) else 0
+
+            score += 3 if (board[22]==value and board[20]==2 and board[21]==2) else 0
+            score += 3 if (board[22]==value and board[10]==2 and board[16]==2) else 0
+            score += 3 if (board[22]==value and board[12]==2 and board[17]==2) else 0
+            score += 3 if (board[22]==value and board[14]==2 and board[18]==2) else 0
+            score += 3 if (board[22]==value and board[23]==2 and board[24]==2) else 0
+
+            score += 3 if (board[23]==value and board[13]==2 and board[18]==2) else 0
+            score += 3 if (board[23]==value and board[22]==2 and board[24]==2) else 0
+
+            score += 3 if (board[24]==value and board[22]==2 and board[23]==2) else 0
+            score += 3 if (board[24]==value and board[12]==2 and board[18]==2) else 0
+            score += 3 if (board[24]==value and board[14]==2 and board[19]==2) else 0
+        #endregion
+
+        return score
+
+    def workerMinimax(_board, depth, isMaxing):
+        if depth == instanceDepth:
+            return countPoints(1)
+
+        if (isMaxing):
+            bestScore = -9999
+            for i in range(25):
+                if _board[i] == 0:
+                    _board[i] = 1
+                    score = workerMinimax(_board, depth+1, False)
+                    _board[i] = 0
+                    if score > bestScore:
+                        bestScore = score
+            return bestScore
+        else:
+            bestScore = 9999
+            for i in range(25):
+                if _board[i] == 0:
+                    _board[i] = 2
+                    score = workerMinimax(_board, depth+1, True)
+                    _board[i] = 0
+                    if score < bestScore:
+                        bestScore = score
+            return bestScore
+
+    def nextTurn(_board):
+        bestScore = -9999
+        bestMove = 0
+        for i in range(25):
+            if _board[i] == 0:
+                _board[i] = 1
+                score = workerMinimax(_board, 0, False)
+                _board[i] = 0
+                if score > bestScore:
+                    bestScore = score
+                    bestMove = i
+        _board[bestMove] = 1
+        return _board
+
+    return nextTurn(board)

@@ -11,27 +11,27 @@
         <div class="container">
           <div class="row">
             {% for i in range(5) %}
-            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
+            <div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
             {% endfor %}
           </div>
           <div class="row">
             {% for i in range(5,10,1) %}
-            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
+            <div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
             {% endfor %}
           </div>
           <div class="row">
             {% for i in range(10,15,1) %}
-            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
+            <div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
             {% endfor %}
           </div>
           <div class="row">
             {% for i in range(15,20,1) %}
-            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
+            <div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
             {% endfor %}
           </div>
           <div class="row">
             {% for i in range(20,25,1) %}
-            <div div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
+            <div onclick="updateBoard({{i}})" id="{{i}}" class="col-2">{{i}}</div>
             {% endfor %}
           </div>
         </div>
@@ -43,7 +43,7 @@
 
 
   <div class="loader" id="timeout">
-    <img src="/staxox/img/loading.gif" style=" height: auto; width: 200px;">
+    <img src="/static/img/loading.gif" style=" height: auto; width: 200px;">
   </div>
   <div class="win-msg" id="winMessage">
     <div data-winMsgText></div>
