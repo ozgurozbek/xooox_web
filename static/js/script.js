@@ -16,12 +16,12 @@ function postButtonVal(theUrl) {
 }
 
 function updateBoard(id) {
-  loader.style.display = "flex";
-  mainPanel[id]= 2;
+  //loader.style.display = "flex";
+  mainPanel[id] = 2;
   console.log(mainPanel.toString());
-  console.log("RESPONSE ::::::::::::::::::::::");
-  mainPanel = postButtonVal('/get?board=' + mainPanel.toString()).slice(1,-2);
-  console.log(mainPanel);
+  console.log("Responding...");
+  mainPanel = postButtonVal('/get?board=' + mainPanel.toString()).slice(1,-2).split(",");
+  document.getElementById("result").innerText=mainPanel;
 }
 
 
