@@ -1,8 +1,8 @@
 # AI is ALWAYS 1
 import time
 
-difficulty = 3
-instanceDepth = 3
+difficulty = 1
+instanceDepth = 1
 
 def runMinimax(board):
     """Runs Minimax with the input button, returns index from board array"""

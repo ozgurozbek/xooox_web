@@ -2,10 +2,9 @@
 // o = 1
 // empty = 0
 var mainPanel = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-const board = document.getElementById('board')
+var fisrtTurn = true;
 const result = document.getElementById('result')
-const loader = document.getElementById('timeout')
+const loader = document.getElementById('loading_gif')
 
 var xmlHttp = new XMLHttpRequest();
 
@@ -16,12 +15,29 @@ function postButtonVal(theUrl) {
 }
 
 function updateBoard(id) {
-  //loader.style.display = "flex";
   mainPanel[id] = 2;
   console.log(mainPanel.toString());
   console.log("Responding...");
   mainPanel = postButtonVal('/get?board=' + mainPanel.toString()).slice(1,-2).split(",");
-  document.getElementById("result").innerText=mainPanel;
+  //result.innerText=mainPanel;
+  placeValuesOnBoard();
+  if (fisrtTurn) {
+    fisrtTurn = false;
+    updateBoard()
+  }
 }
 
-
+function placeValuesOnBoard(){
+  for (let index = 0; index < 25; index++) {
+    if (mainPanel[index] == 0) {
+      value = "-"
+    } else if (mainPanel[index] == 1) {
+      value = "O";
+      document.getElementById(index).removeAttribute("onclick");
+    } else if (mainPanel[index] == 2) {
+      value = "X";
+      document.getElementById(index).removeAttribute("onclick");
+    };
+    document.getElementById(index).innerText = value;
+  }
+}

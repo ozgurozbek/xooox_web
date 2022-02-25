@@ -17,9 +17,10 @@ ID|Status   |Content
 02|DONE     |Backend returns a number, insert "O" to that id.
 03|BACKLOG  |While waiting for backend input of 2 seconds timeout, display loading animation.
 04|DONE     |Create Header.html, Footer.html using Bootstrap.
-05|         |Implement and use bootstrap responsive structure for the gameloop field.
+05|DONE     |Implement and use bootstrap responsive structure for the gameloop field.
 06|DONE     |Remove JS side win conditions.
-07|BACKLOG  |Send board POST -> This does not work properly.
+07|DONE     |Send board POST -> This does not work properly.
+08|DONE     |Display X & O.
 
 ## AI
 
