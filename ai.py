@@ -1,6 +1,4 @@
-# AI is ALWAYS 1
-import time
-
+# AI is ALWAYS 1, PLAYER is ALWAYS 2
 difficulty = 1
 instanceDepth = 1
 
@@ -47,25 +45,25 @@ def runMinimax(board):
         if (difficulty >= 2):
             score += 2 if (len(set([board[0],board[5],board[10],value]))==1) else 0
             score += 2 if (len(set([board[1],board[6],board[11],value]))==1) else 0
-            score += 2 if (len(set([board[2],board[7],board[12],value]))==1) else 0
+            score += 4 if (len(set([board[2],board[7],board[12],value]))==1) else 0
             score += 2 if (len(set([board[3],board[8],board[13],value]))==1) else 0
             score += 2 if (len(set([board[4],board[9],board[14],value]))==1) else 0
 
             score += 2 if (len(set([board[10],board[15],board[20],value]))==1) else 0
             score += 2 if (len(set([board[11],board[16],board[21],value]))==1) else 0
-            score += 2 if (len(set([board[12],board[17],board[22],value]))==1) else 0
+            score += 4 if (len(set([board[12],board[17],board[22],value]))==1) else 0
             score += 2 if (len(set([board[13],board[18],board[23],value]))==1) else 0
             score += 2 if (len(set([board[14],board[19],board[24],value]))==1) else 0
 
             score += 2 if (len(set([board[0],board[1],board[2],value]))==1) else 0
             score += 2 if (len(set([board[5],board[6],board[7],value]))==1) else 0
-            score += 2 if (len(set([board[10],board[11],board[12],value]))==1) else 0
+            score += 4 if (len(set([board[10],board[11],board[12],value]))==1) else 0
             score += 2 if (len(set([board[15],board[16],board[17],value]))==1) else 0
             score += 2 if (len(set([board[20],board[21],board[22],value]))==1) else 0
 
             score += 2 if (len(set([board[2],board[3],board[4],value]))==1) else 0
             score += 2 if (len(set([board[7],board[8],board[9],value]))==1) else 0
-            score += 2 if (len(set([board[12],board[13],board[14],value]))==1) else 0
+            score += 4 if (len(set([board[12],board[13],board[14],value]))==1) else 0
             score += 2 if (len(set([board[17],board[18],board[19],value]))==1) else 0
             score += 2 if (len(set([board[22],board[23],board[24],value]))==1) else 0
 
