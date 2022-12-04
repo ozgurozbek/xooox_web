@@ -1,6 +1,7 @@
 # AI is ALWAYS 1, PLAYER is ALWAYS 2
-difficulty = 1
-instanceDepth = 1
+difficulty = 3
+instanceDepth = 3
+# depthInc = 0
 
 def runMinimax(board):
     """Runs Minimax with the input button, returns index from board array"""
@@ -229,6 +230,14 @@ def runMinimax(board):
                     bestScore = score
                     bestMove = i
         _board[bestMove] = 1
+
+        # global depthInc
+        # global instanceDepth
+        # depthInc = depthInc + 0.425
+        # if depthInc%1<1:
+        #     instanceDepth = instanceDepth + 1
+        #     print("Instance D:",instanceDepth)
+
         return _board
 
     return nextTurn(board)
