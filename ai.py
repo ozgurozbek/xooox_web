@@ -232,3 +232,146 @@ def runMinimax(board):
         return _board
 
     return nextTurn(board)
+
+def getResult(board):
+    pScore, aiScore, pTileCount, aiTileCount = 0,0,0,0
+
+    # Get score
+    pScore += 1 if (len(set([board[0],board[5],board[10],2]))==1) else 0
+    pScore += 1 if (len(set([board[1],board[6],board[11],2]))==1) else 0
+    pScore += 2 if (len(set([board[2],board[7],board[12],2]))==1) else 0
+    pScore += 1 if (len(set([board[3],board[8],board[13],2]))==1) else 0
+    pScore += 1 if (len(set([board[4],board[9],board[14],2]))==1) else 0
+
+    pScore += 1 if (len(set([board[10],board[15],board[20],2]))==1) else 0
+    pScore += 1 if (len(set([board[11],board[16],board[21],2]))==1) else 0
+    pScore += 2 if (len(set([board[12],board[17],board[22],2]))==1) else 0
+    pScore += 1 if (len(set([board[13],board[18],board[23],2]))==1) else 0
+    pScore += 1 if (len(set([board[14],board[19],board[24],2]))==1) else 0
+
+    pScore += 1 if (len(set([board[0],board[1],board[2],2]))==1) else 0
+    pScore += 1 if (len(set([board[5],board[6],board[7],2]))==1) else 0
+    pScore += 2 if (len(set([board[10],board[11],board[12],2]))==1) else 0
+    pScore += 1 if (len(set([board[15],board[16],board[17],2]))==1) else 0
+    pScore += 1 if (len(set([board[20],board[21],board[22],2]))==1) else 0
+
+    pScore += 1 if (len(set([board[2],board[3],board[4],2]))==1) else 0
+    pScore += 1 if (len(set([board[7],board[8],board[9],2]))==1) else 0
+    pScore += 2 if (len(set([board[12],board[13],board[14],2]))==1) else 0
+    pScore += 1 if (len(set([board[17],board[18],board[19],2]))==1) else 0
+    pScore += 1 if (len(set([board[22],board[23],board[24],2]))==1) else 0
+
+    pScore += 1 if (len(set([board[0],board[6],board[12],2]))==1) else 0
+    pScore += 1 if (len(set([board[4],board[8],board[12],2]))==1) else 0
+    pScore += 1 if (len(set([board[12],board[16],board[20],2]))==1) else 0
+    pScore += 1 if (len(set([board[12],board[18],board[24],2]))==1) else 0
+
+    pScore += 1 if (len(set([board[2],board[6],board[10],2]))==1) else 0
+    pScore += 1 if (len(set([board[2],board[8],board[14],2]))==1) else 0
+    pScore += 1 if (len(set([board[10],board[16],board[22],2]))==1) else 0
+    pScore += 1 if (len(set([board[14],board[18],board[22],2]))==1) else 0
+
+    aiScore += 1 if (len(set([board[0],board[5],board[10],1]))==1) else 0
+    aiScore += 1 if (len(set([board[1],board[6],board[11],1]))==1) else 0
+    aiScore += 2 if (len(set([board[2],board[7],board[12],1]))==1) else 0
+    aiScore += 1 if (len(set([board[3],board[8],board[13],1]))==1) else 0
+    aiScore += 1 if (len(set([board[4],board[9],board[14],1]))==1) else 0
+
+    aiScore += 1 if (len(set([board[10],board[15],board[20],1]))==1) else 0
+    aiScore += 1 if (len(set([board[11],board[16],board[21],1]))==1) else 0
+    aiScore += 2 if (len(set([board[12],board[17],board[22],1]))==1) else 0
+    aiScore += 1 if (len(set([board[13],board[18],board[23],1]))==1) else 0
+    aiScore += 1 if (len(set([board[14],board[19],board[24],1]))==1) else 0
+
+    aiScore += 1 if (len(set([board[0],board[1],board[2],1]))==1) else 0
+    aiScore += 1 if (len(set([board[5],board[6],board[7],1]))==1) else 0
+    aiScore += 2 if (len(set([board[10],board[11],board[12],1]))==1) else 0
+    aiScore += 1 if (len(set([board[15],board[16],board[17],1]))==1) else 0
+    aiScore += 1 if (len(set([board[20],board[21],board[22],1]))==1) else 0
+
+    aiScore += 1 if (len(set([board[2],board[3],board[4],1]))==1) else 0
+    aiScore += 1 if (len(set([board[7],board[8],board[9],1]))==1) else 0
+    aiScore += 2 if (len(set([board[12],board[13],board[14],1]))==1) else 0
+    aiScore += 1 if (len(set([board[17],board[18],board[19],1]))==1) else 0
+    aiScore += 1 if (len(set([board[22],board[23],board[24],1]))==1) else 0
+
+    aiScore += 1 if (len(set([board[0],board[6],board[12],1]))==1) else 0
+    aiScore += 1 if (len(set([board[4],board[8],board[12],1]))==1) else 0
+    aiScore += 1 if (len(set([board[12],board[16],board[20],1]))==1) else 0
+    aiScore += 1 if (len(set([board[12],board[18],board[24],1]))==1) else 0
+
+    aiScore += 1 if (len(set([board[2],board[6],board[10],1]))==1) else 0
+    aiScore += 1 if (len(set([board[2],board[8],board[14],1]))==1) else 0
+    aiScore += 1 if (len(set([board[10],board[16],board[22],1]))==1) else 0
+    aiScore += 1 if (len(set([board[14],board[18],board[22],1]))==1) else 0
+
+    # Get tile count
+    pTileCount += 3 if (len(set([board[0],board[5],board[10],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[1],board[6],board[11],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[2],board[7],board[12],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[3],board[8],board[13],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[4],board[9],board[14],2]))==1) else 0
+
+    pTileCount += 3 if (len(set([board[10],board[15],board[20],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[11],board[16],board[21],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[12],board[17],board[22],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[13],board[18],board[23],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[14],board[19],board[24],2]))==1) else 0
+
+    pTileCount += 3 if (len(set([board[0],board[1],board[2],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[5],board[6],board[7],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[10],board[11],board[12],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[15],board[16],board[17],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[20],board[21],board[22],2]))==1) else 0
+
+    pTileCount += 3 if (len(set([board[2],board[3],board[4],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[7],board[8],board[9],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[12],board[13],board[14],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[17],board[18],board[19],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[22],board[23],board[24],2]))==1) else 0
+
+    pTileCount += 3 if (len(set([board[0],board[6],board[12],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[4],board[8],board[12],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[12],board[16],board[20],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[12],board[18],board[24],2]))==1) else 0
+
+    pTileCount += 3 if (len(set([board[2],board[6],board[10],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[2],board[8],board[14],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[10],board[16],board[22],2]))==1) else 0
+    pTileCount += 3 if (len(set([board[14],board[18],board[22],2]))==1) else 0
+
+    aiTileCount += 3 if (len(set([board[0],board[5],board[10],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[1],board[6],board[11],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[2],board[7],board[12],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[3],board[8],board[13],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[4],board[9],board[14],1]))==1) else 0
+
+    aiTileCount += 3 if (len(set([board[10],board[15],board[20],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[11],board[16],board[21],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[12],board[17],board[22],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[13],board[18],board[23],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[14],board[19],board[24],1]))==1) else 0
+
+    aiTileCount += 3 if (len(set([board[0],board[1],board[2],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[5],board[6],board[7],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[10],board[11],board[12],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[15],board[16],board[17],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[20],board[21],board[22],1]))==1) else 0
+
+    aiTileCount += 3 if (len(set([board[2],board[3],board[4],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[7],board[8],board[9],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[12],board[13],board[14],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[17],board[18],board[19],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[22],board[23],board[24],1]))==1) else 0
+
+    aiTileCount += 3 if (len(set([board[0],board[6],board[12],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[4],board[8],board[12],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[12],board[16],board[20],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[12],board[18],board[24],1]))==1) else 0
+
+    aiTileCount += 3 if (len(set([board[2],board[6],board[10],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[2],board[8],board[14],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[10],board[16],board[22],1]))==1) else 0
+    aiTileCount += 3 if (len(set([board[14],board[18],board[22],1]))==1) else 0
+    #Get count
+    return(pScore, aiScore, pTileCount, aiTileCount)
