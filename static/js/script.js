@@ -2,9 +2,8 @@
 // o = 1
 // empty = 0
 var mainPanel = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-var fisrtTurn = true;
+var firstTurn = true;
 const result = document.getElementById('result')
-const loader = document.getElementById('loading_gif')
 
 var xmlHttp = new XMLHttpRequest();
 
@@ -19,10 +18,9 @@ function updateBoard(id) {
   console.log(mainPanel.toString());
   console.log("Responding...");
   mainPanel = postButtonVal('/get?board=' + mainPanel.toString()).slice(1,-2).split(",");
-  //result.innerText=mainPanel;
   placeValuesOnBoard();
-  if (fisrtTurn) {
-    fisrtTurn = false;
+  if (firstTurn) {
+    firstTurn = false;
     updateBoard()
   }
 }
@@ -39,5 +37,32 @@ function placeValuesOnBoard(){
       document.getElementById(index).removeAttribute("onclick");
     };
     document.getElementById(index).innerText = value;
+  }
+
+  getScoreInfo();
+}
+
+function getScoreInfo(){
+  console.log(mainPanel.toString());
+  console.log("Getting Score...");
+  output = postButtonVal('/get_result?board=' + mainPanel.toString()).slice(1,-2).split(",");
+  result.innerText = "X > "+output[0]+" with "+output[2]+" tiles\nO > "+output[1]+" with "+output[3]+" tiles.";
+  winner = ""
+
+  if (mainPanel.filter(x => x == 0).length == 0){
+    if (output[0]>output[1]) {
+      winner="X wins!"
+    } else if (output[0]==output[1]) {
+      if (output[2]>output[3]) {
+        winner="X wins!"
+      } else if (output[2]==output[3]) {
+        winner="It is a Draw!"
+      } else {
+        winner="O wins!"
+      }
+    } else {
+      winner="O wins!"
+    }
+    result.innerText = "X > "+output[0]+" with "+output[2]+" tiles\nO > "+output[1]+" with "+output[3]+" tiles.\n"+winner+" Thank you for playing!";
   }
 }
