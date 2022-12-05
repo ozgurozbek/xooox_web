@@ -1,9 +1,9 @@
 # AI is ALWAYS 1, PLAYER is ALWAYS 2
-difficulty = 3
-instanceDepth = 3
-# depthInc = 0
+difficulty = 1
+# instanceDepth = [1,1,2,4,4,11,13,11,9,7,5,3,1]
+instanceDepth = [1,1,2,3,3,3,5,3,3,3,3,3,1]
 
-def runMinimax(board):
+def runMinimax(board, depthInc):
     """Runs Minimax with the input button, returns index from board array"""
 
     def countPoints(value):
@@ -193,8 +193,8 @@ def runMinimax(board):
 
         return score
 
-    def workerMinimax(_board, depth, isMaxing):
-        if depth == instanceDepth:
+    def workerMinimax(_board, depth, isMaxing, alpha, beta):
+        if depth == instanceDepth[depthInc]:
             return countPoints(1)
 
         if (isMaxing):
@@ -202,20 +202,26 @@ def runMinimax(board):
             for i in range(25):
                 if _board[i] == 0:
                     _board[i] = 1
-                    score = workerMinimax(_board, depth+1, False)
+                    score = workerMinimax(_board, depth+1, False, alpha, beta)
                     _board[i] = 0
                     if score > bestScore:
                         bestScore = score
+                    alpha = max(alpha, bestScore)
+                    if beta <= alpha:
+                        break
             return bestScore
         else:
             bestScore = 9999
             for i in range(25):
                 if _board[i] == 0:
                     _board[i] = 2
-                    score = workerMinimax(_board, depth+1, True)
+                    score = workerMinimax(_board, depth+1, True, alpha, beta)
                     _board[i] = 0
                     if score < bestScore:
                         bestScore = score
+                    beta = min(beta, bestScore)
+                    if beta <= alpha:
+                        break
             return bestScore
 
     def nextTurn(_board):
@@ -224,19 +230,12 @@ def runMinimax(board):
         for i in range(25):
             if _board[i] == 0:
                 _board[i] = 1
-                score = workerMinimax(_board, 0, False)
+                score = workerMinimax(_board, 0, False, -9999, 9999)
                 _board[i] = 0
                 if score > bestScore:
                     bestScore = score
                     bestMove = i
         _board[bestMove] = 1
-
-        # global depthInc
-        # global instanceDepth
-        # depthInc = depthInc + 0.425
-        # if depthInc%1<1:
-        #     instanceDepth = instanceDepth + 1
-        #     print("Instance D:",instanceDepth)
 
         return _board
 

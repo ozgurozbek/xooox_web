@@ -3,6 +3,7 @@
 // empty = 0
 var mainPanel = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 var firstTurn = true;
+var aiTurn = 0
 const result = document.getElementById('result')
 
 var xmlHttp = new XMLHttpRequest();
@@ -16,13 +17,15 @@ function postButtonVal(theUrl) {
 function updateBoard(id) {
   mainPanel[id] = 2;
   console.log(mainPanel.toString());
-  console.log("Responding...");
-  mainPanel = postButtonVal('/get?board=' + mainPanel.toString()).slice(1,-2).split(",");
+  console.log("Responding for AI turn "+aiTurn+"...");
+  mainPanel = postButtonVal('/get?board='+mainPanel.toString()+'&aiTurn='+aiTurn).slice(1,-2).split(",")
   placeValuesOnBoard();
   if (firstTurn) {
     firstTurn = false;
     updateBoard()
   }
+  console.log("Done.");
+  aiTurn += 1;
 }
 
 function placeValuesOnBoard(){
@@ -65,4 +68,5 @@ function getScoreInfo(){
     }
     result.innerText = "X > "+output[0]+" with "+output[2]+" tiles\nO > "+output[1]+" with "+output[3]+" tiles.\n"+winner+" Thank you for playing!";
   }
+  console.log("Done.");
 }
