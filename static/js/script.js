@@ -17,29 +17,28 @@ function postButtonVal(theUrl) {
 function updateBoard(id) {
   mainPanel[id] = 2;
   console.log(mainPanel.toString());
-  console.log("Responding for AI turn "+aiTurn+"...");
-  mainPanel = postButtonVal('/get?board='+mainPanel.toString()+'&aiTurn='+aiTurn).slice(1,-2).split(",")
+  result.innerText = "AI is thinking for turn "+aiTurn+". Please wait...";
+  aiDiff = document.getElementById("difficultySelect").value
+  aiDepth = document.getElementById("depthSelect").value
+  mainPanel = postButtonVal('/get?board='+mainPanel.toString()+'&aiTurn='+aiTurn+'&aiDiff='+aiDiff+'&aiDepth='+aiDepth).slice(1,-2).split(",")
   placeValuesOnBoard();
   if (firstTurn) {
     firstTurn = false;
     updateBoard()
   }
-  console.log("Done.");
+  console.log("Board updated.");
   aiTurn += 1;
 }
 
 function placeValuesOnBoard(){
   for (let index = 0; index < 25; index++) {
-    if (mainPanel[index] == 0) {
-      value = "-"
-    } else if (mainPanel[index] == 1) {
-      value = "O";
+    if (mainPanel[index] == 1) {
+      document.getElementById("o"+index).style.display = 'block';
       document.getElementById(index).removeAttribute("onclick");
     } else if (mainPanel[index] == 2) {
-      value = "X";
+      document.getElementById("x"+index).style.display = 'block';
       document.getElementById(index).removeAttribute("onclick");
     };
-    document.getElementById(index).innerText = value;
   }
 
   getScoreInfo();
@@ -47,7 +46,7 @@ function placeValuesOnBoard(){
 
 function getScoreInfo(){
   console.log(mainPanel.toString());
-  console.log("Getting Score...");
+  result.innerText = "Getting Score...";
   output = postButtonVal('/get_result?board=' + mainPanel.toString()).slice(1,-2).split(",");
   result.innerText = "X > "+output[0]+" with "+output[2]+" tiles\nO > "+output[1]+" with "+output[3]+" tiles.";
   winner = ""
@@ -68,5 +67,5 @@ function getScoreInfo(){
     }
     result.innerText = "X > "+output[0]+" with "+output[2]+" tiles\nO > "+output[1]+" with "+output[3]+" tiles.\n"+winner+" Thank you for playing!";
   }
-  console.log("Done.");
+  console.log("Score updated.");
 }
