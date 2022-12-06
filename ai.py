@@ -1,10 +1,25 @@
 # AI is ALWAYS 1, PLAYER is ALWAYS 2
-difficulty = 1
-# instanceDepth = [1,1,2,4,4,11,13,11,9,7,5,3,1]
-instanceDepth = [1,1,2,3,3,3,5,3,3,3,3,3,1]
+starter = [1,1,2,3,3,3,5,3,3,3,3,3,1]
+experienced = [1,1,2,4,4,4,5,5,5,5,3,3,1]
+master = [1,1,2,4,4,5,9,11,9,7,5,3,1]
+computer = [1,1,3,11,17,15,13,11,9,7,5,3,1]
 
-def runMinimax(board, depthInc):
-    """Runs Minimax with the input button, returns index from board array"""
+
+def runMinimax(board, depthInc, diffSlc, depthSlc):
+    """Runs Minimax with the input button, returns index from board array. Board defines
+    the game board. DepthInc is for depth increase, to keep track of AI Turns. Slc values
+    are player selected values. diffSlc is for difficulty (1-2-3) and depthSlc is for
+    ai depth advancements (starter, experienced, master, computer)."""
+    difficulty = diffSlc
+
+    if depthSlc == 4:
+        instanceDepth = computer
+    elif depthSlc == 3:
+        instanceDepth = master
+    elif depthSlc == 2:
+        instanceDepth = experienced
+    else:
+        instanceDepth = starter
 
     def countPoints(value):
         score = 0

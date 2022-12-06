@@ -40,9 +40,34 @@
       </div>
     {% endif %}
     {% endfor %}
+    
+    <div class="justify-content-center row">
+      <div class="col-10 card mt-2 row">
+        You can adjust these settings every turn!
+        <div class="col-6">
+          Difficulty: <select id="difficultySelect" name="difficultySelect">
+            <option value="1">Beginner</option>
+            <option value="2">Advanced</option>
+            <option value="3" selected>Aggressive</option>
+          </select>
+          <p>Minimal impact on thinking time, some impact on quality.</p>
+        </div>
+
+        <div class="col-6">
+          Experience: <select id="depthSelect" name="depthSelect">
+            <option value="1">Starter</option>
+            <option value="2" selected>Experienced</option>
+            <option value="3">Master</option>
+            <option hidden value="4">Computer</option>
+          </select>
+          <p>Massive impact on thinking time, huge impact on quality.</p>
+      </div>
+      </div>
+
+      <div class="col-2 card mt-2 text-center" id="result"></div>
+    </div>
   </div>
-  
-  <p id="result"></p>
+  </div>
 </body>
 
 {% include 'FOOTER.html' %}

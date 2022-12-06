@@ -15,8 +15,10 @@ def root():
 def get():
     input_board = [int(i) for i in request.args.get('board', default=empty_board, type=str).split(",")]
     ai_turn_selector = request.args.get('aiTurn', default=0, type=int)
+    ai_difficulty_selector = request.args.get('aiDiff', default=1, type=int)
+    ai_depth_selector = request.args.get('aiDepth', default=1, type=int)
     #Add AI difficulty and depth selectors here.
-    return jsonify(ai.runMinimax(input_board, ai_turn_selector))
+    return jsonify(ai.runMinimax(input_board, ai_turn_selector, ai_difficulty_selector, ai_depth_selector))
 
 @app.route('/get_result', methods=['GET']) # Maybe it can converted to a POST only, using a form to this.
 def get_result():
