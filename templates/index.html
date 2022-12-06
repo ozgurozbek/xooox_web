@@ -1,39 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100vh;">
+<html lang="en">
 {% include 'HEAD.html' %}
 {% include 'HEADER.html' %}
 
-<body>
-  <div class="col-12 offset-1">
+<body style="height: 120vh;">
+  <div class="justify-content-center align-items-center">
+    <div style="max-width: 100vh; margin: auto;">
     {% for i in range(25) %}
     {% if i == 0 or i == 5 or i == 10 or i == 15 or i == 20 %}
-      <div class="row m-0">
+      <div class="flex m-0 p-0 justify-content-center grid">
         {% if i == 0 or i == 1 or i == 5 or i == 6 %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-danger p-0 m-0">-</div>
+        <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-danger r m-0 square">
+          <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+          <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+        </div>
         {% elif i == 3 or i == 4 or i == 8 or i == 9 %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-success p-0 m-0">-</div>
+        <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-success m-0 square">
+          <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+          <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+        </div>
         {% elif i == 15 or i == 16 or i == 20 or i == 21 %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-warning p-0 m-0">-</div>
+        <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-warning m-0 square">
+          <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+          <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+        </div>
         {% elif i == 19 or i == 18 or i == 23 or i == 24 %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-info p-0 m-0">-</div>
+        <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-info m-0 square">
+          <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+          <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+        </div>
         {% elif i == 12 %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-light p-0 m-0">-</div>
+        <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-light m-0 square">
+          <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+          <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+        </div>
         {% else %}
-        <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-secondary p-0 m-0">-</div>
+        <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-secondary m-0 square">
+          <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+          <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+        </div>
         {% endif %}
     {% else %}
       {% if i == 0 or i == 1 or i == 5 or i == 6 %}
-      <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-danger p-0 m-0">-</div>
+      <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-danger m-0 square">
+        <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+        <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+      </div>
       {% elif i == 3 or i == 4 or i == 8 or i == 9 %}
-      <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-success p-0 m-0">-</div>
+      <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-success m-0 square">
+        <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+        <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+      </div>
       {% elif i == 15 or i == 16 or i == 20 or i == 21 %}
-      <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-warning p-0 m-0">-</div>
+      <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-warning m-0 square">
+        <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+        <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+      </div>
       {% elif i == 19 or i == 18 or i == 23 or i == 24 %}
-      <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-info p-0 m-0">-</div>
+      <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-info m-0 square">
+        <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+        <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+      </div>
       {% elif i == 12 %}
-      <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-light p-0 m-0">-</div>
+      <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-light m-0 square">
+        <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+        <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+      </div>
       {% else %}
-      <div onclick="updateBoard({{i}})" id="{{i}}" style="font-size: 300%;"class="col-2 btn btn-secondary p-0 m-0">-</div>
+      <div onclick="updateBoard({{i}})" id="{{i}}" class="p-0 btn btn-secondary m-0 square">
+        <img id="x{{i}}" style="display:none;" src="../static/img/X.png" alt="X Image">
+        <img id="o{{i}}" style="display:none;" src="../static/img/O.png" alt="O Image">
+      </div>
       {% endif %}
     {% endif %}
     {% if i == 4 or i == 9 or i == 14 or i == 19 or i == 24 %}
