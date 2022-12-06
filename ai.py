@@ -95,7 +95,7 @@ def runMinimax(board, depthInc, diffSlc, depthSlc):
         #endregion
 
         #region Hard, Block Enemy
-        if (difficulty >= 2):
+        if (difficulty >= 3):
             score += 3 if (board[0]==value and board[5]==2 and board[10]==2) else 0
             score += 3 if (board[0]==value and board[6]==2 and board[12]==2) else 0
             score += 3 if (board[0]==value and board[1]==2 and board[2]==2) else 0
